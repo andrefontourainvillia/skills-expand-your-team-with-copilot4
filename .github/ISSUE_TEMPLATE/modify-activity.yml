@@ -1,0 +1,84 @@
+name: Modify Existing Activity
+description: Request changes to an existing activity's details
+title: "[Activity] Modify: "
+labels: ["enhancement", "activity"]
+assignees:
+  - copilot
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Modify an Existing Activity
+        Use this form to request changes to an existing activity. Please specify what needs to be changed.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: Which activity needs to be modified?
+      placeholder: "e.g., Chess Club, Programming Class"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: change-type
+    attributes:
+      label: What needs to be changed?
+      description: Select the type of change needed
+      options:
+        - Activity description
+        - Schedule (days and/or times)
+        - Maximum participants limit
+        - Multiple items (specify in details)
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-value
+    attributes:
+      label: Current Information
+      description: What is the current information that needs to be changed?
+      placeholder: "e.g., Current schedule: Mondays and Fridays, 3:15 PM - 4:45 PM"
+    validations:
+      required: true
+
+  - type: textarea
+    id: new-value
+    attributes:
+      label: New Information
+      description: What should the new information be?
+      placeholder: "e.g., New schedule: Tuesdays and Thursdays, 3:30 PM - 5:00 PM"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Change
+      description: Why is this change needed?
+      placeholder: "e.g., Room conflict with another activity, teacher availability changed"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Information
+      description: Any other details that would be helpful
+      placeholder: "Optional: Add any other relevant information"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### Acceptance Criteria
+        - The specified activity should be updated with the new information
+        - All changes should be reflected on the website
+        - Existing student signups should be preserved (unless they conflict with the changes)
+        - If schedule changes, consider whether to notify students
+
+        ### Technical Context
+        - Activities are stored in `src/backend/database.py` in the `initial_activities` dictionary
+        - For schedule changes: update both the human-readable "schedule" string and the "schedule_details" object
+        - For time changes: use 24-hour format (e.g., "15:30" for 3:30 PM)

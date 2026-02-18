@@ -1,0 +1,71 @@
+name: Remove Activity
+description: Request to remove an activity that is no longer offered
+title: "[Activity] Remove: "
+labels: ["activity", "removal"]
+assignees:
+  - copilot
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Remove an Activity
+        Use this form to request removal of an activity that is no longer being offered.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: Which activity should be removed?
+      placeholder: "e.g., Chess Club, Art Club"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Removal
+      description: Why is this activity being removed?
+      placeholder: "e.g., Teacher no longer available, insufficient student interest, program discontinued"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: has-participants
+    attributes:
+      label: Are there currently students signed up?
+      description: Check the website to see if students are enrolled
+      options:
+        - "Yes, there are students enrolled"
+        - "No, no students are enrolled"
+        - "I'm not sure"
+    validations:
+      required: true
+
+  - type: textarea
+    id: student-notification
+    attributes:
+      label: Student Notification Plan
+      description: If students are enrolled, how will they be notified about this change?
+      placeholder: "e.g., Email will be sent to all enrolled students, announcement will be made during assembly"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Information
+      description: Any other details that would be helpful
+      placeholder: "Optional: Add any other relevant information"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### Acceptance Criteria
+        - The activity should no longer appear in the activities list
+        - Students should not be able to sign up for this activity
+        - If students were enrolled, consider data handling/archival needs
+
+        ### Technical Context
+        - Activities are stored in `src/backend/database.py` in the `initial_activities` dictionary
+        - Remove the entire activity entry from the dictionary
+        - Consider impact on any students currently enrolled
