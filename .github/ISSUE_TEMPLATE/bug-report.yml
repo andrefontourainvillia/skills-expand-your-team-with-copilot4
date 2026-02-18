@@ -1,0 +1,92 @@
+name: Bug Report
+description: Report a problem with the website or system
+title: "[Bug] "
+labels: ["bug"]
+assignees:
+  - copilot
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Report a Bug
+        Thank you for helping us improve the system! Please describe the problem you're experiencing.
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: What is the problem?
+      description: Describe what's not working correctly
+      placeholder: "e.g., Students cannot sign up for Soccer Team, the schedule shows the wrong time"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How can we see this problem? List the steps
+      placeholder: |
+        1. Go to the activities page
+        2. Click on 'Soccer Team'
+        3. Try to sign up
+        4. See error message
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: What should happen instead?
+      description: Describe what you expected to happen
+      placeholder: "e.g., Student should be added to the activity roster"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: How urgent is this?
+      description: Select the severity level
+      options:
+        - Critical - System is unusable
+        - High - Major feature is broken
+        - Medium - Feature works but has issues
+        - Low - Minor inconvenience
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area is affected?
+      description: Select the area where the problem occurs
+      options:
+        - Viewing activities list
+        - Signing up for activities
+        - Activity schedules display
+        - Student information
+        - Other (specify in description)
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Information
+      description: Screenshots, error messages, or other helpful details
+      placeholder: "Optional: Add any other relevant information"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### Acceptance Criteria
+        - The reported problem should be fixed
+        - The system should work as expected
+        - Similar issues should be prevented if possible
+        - Changes should not break other features
+
+        ### Technical Context
+        - Frontend files: `src/static/index.html`, `src/static/app.js`, `src/static/styles.css`
+        - Backend API: `src/app.py` and `src/backend/` directory
+        - Database initialization: `src/backend/database.py`
+        - Test locally with: `python -m uvicorn src.app:app --host 0.0.0.0 --port 8000`

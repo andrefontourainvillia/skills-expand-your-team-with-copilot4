@@ -1,0 +1,96 @@
+name: Feature Request
+description: Suggest a new feature or improvement
+title: "[Feature] "
+labels: ["enhancement"]
+assignees:
+  - copilot
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        Have an idea to improve the system? Let us know!
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: What feature would you like?
+      description: Describe the new feature or improvement
+      placeholder: "e.g., Add ability to export student roster, show activity locations on the website"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-solving
+    attributes:
+      label: What problem does this solve?
+      description: Explain why this feature would be helpful
+      placeholder: "e.g., Teachers need to print rosters for attendance, students often ask where activities meet"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: How should it work?
+      description: Describe how you envision this feature working
+      placeholder: "e.g., Add an 'Export' button next to each activity that downloads a CSV file with student names and emails"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user-type
+    attributes:
+      label: Who would use this feature?
+      description: Select who would benefit from this feature
+      options:
+        - Teachers
+        - Students
+        - Both teachers and students
+        - Administrators
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this feature?
+      description: Select the priority level
+      options:
+        - Critical - Needed urgently
+        - High - Very important
+        - Medium - Would be nice to have
+        - Low - Not urgent
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you thought of other ways to solve this problem?
+      placeholder: "Optional: Describe any alternative solutions or workarounds you've considered"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Information
+      description: Screenshots, examples from other systems, or other helpful details
+      placeholder: "Optional: Add any other relevant information"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### Acceptance Criteria
+        - The feature should work as described
+        - The feature should be easy to use for the target users
+        - The feature should not negatively impact existing functionality
+        - Code should follow existing patterns and conventions
+
+        ### Technical Context
+        - Frontend: HTML/CSS/JavaScript in `src/static/` directory
+        - Backend: Python with FastAPI in `src/app.py` and `src/backend/` directory
+        - Database: MongoDB (initialized in `src/backend/database.py`)
+        - Keep solutions simple and maintainable for non-technical staff
