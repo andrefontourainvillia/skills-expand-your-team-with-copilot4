@@ -64,5 +64,16 @@ These dependencies will be installed when you run `pip install -r src/requiremen
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
 | POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
 
+### Features
+
+#### Social Sharing
+
+Each activity card includes social sharing buttons that allow users to easily share activities with friends via:
+- **Facebook** - Opens Facebook share dialog with activity details
+- **Twitter** - Opens Twitter compose with pre-filled message about the activity
+- **Email** - Opens default email client with subject and body containing activity information
+
+The share functionality includes the activity name, description, and schedule automatically.
+
 > [!IMPORTANT]
 > All data is stored in memory, which means data will be reset when the server restarts.
