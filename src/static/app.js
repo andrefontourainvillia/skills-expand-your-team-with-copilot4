@@ -1,4 +1,50 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Dark mode toggle functionality
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+  const darkModeIcon = darkModeToggle.querySelector(".mode-icon");
+  const darkModeText = darkModeToggle.querySelector("span:last-child");
+
+  // Check if user has a saved dark mode preference
+  function initializeDarkMode() {
+    const savedDarkMode = localStorage.getItem("darkMode");
+    if (savedDarkMode === "enabled") {
+      document.body.classList.add("dark-mode");
+      updateDarkModeButton(true);
+    }
+  }
+
+  // Update dark mode button appearance
+  function updateDarkModeButton(isDarkMode) {
+    if (isDarkMode) {
+      darkModeIcon.textContent = "☀️";
+      darkModeText.textContent = "Light Mode";
+    } else {
+      darkModeIcon.textContent = "🌙";
+      darkModeText.textContent = "Dark Mode";
+    }
+  }
+
+  // Toggle dark mode
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    const isDarkMode = document.body.classList.contains("dark-mode");
+    
+    // Save preference to localStorage
+    if (isDarkMode) {
+      localStorage.setItem("darkMode", "enabled");
+    } else {
+      localStorage.removeItem("darkMode");
+    }
+    
+    updateDarkModeButton(isDarkMode);
+  }
+
+  // Event listener for dark mode toggle
+  darkModeToggle.addEventListener("click", toggleDarkMode);
+
+  // Initialize dark mode on page load
+  initializeDarkMode();
+
   // DOM elements
   const activitiesList = document.getElementById("activities-list");
   const messageDiv = document.getElementById("message");
